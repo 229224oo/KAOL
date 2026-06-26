@@ -48,6 +48,22 @@
       gap: 15px;
     }
 
+    .lang-selector {
+      padding: 6px 12px;
+      background: rgba(255, 215, 0, 0.1);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      border-radius: 5px;
+      color: #ffd700;
+      font-size: 12px;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .lang-selector:hover {
+      border-color: #ffd700;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    }
+
     .wallet-address {
       font-size: 12px;
       color: #ffd700;
@@ -640,10 +656,16 @@
 <body>
   <!-- 导航栏 -->
   <nav class="navbar">
-    <div class="nav-logo">⚔️ 考拉传奇人生</div>
+    <div class="nav-logo" data-i18n="nav_title">⚔️ 考拉传奇人生</div>
     <div class="nav-wallet">
+      <select class="lang-selector" id="langSelector" onchange="switchLanguage(this.value)">
+        <option value="zh">中文</option>
+        <option value="en">English</option>
+        <option value="ko">한국어</option>
+        <option value="ja">日本語</option>
+      </select>
       <span class="wallet-address" id="walletAddress">未连接</span>
-      <button class="btn btn-connect" id="connectBtn" onclick="connectWallet()">连接钱包</button>
+      <button class="btn btn-connect" id="connectBtn" onclick="connectWallet()" data-i18n="nav_connect">连接钱包</button>
     </div>
   </nav>
 
@@ -651,18 +673,18 @@
   <div class="main-container">
     <!-- 状态卡片 -->
     <div class="status-card">
-      <div class="status-header">我的资产</div>
+      <div class="status-header" data-i18n="status_my_assets">我的资产</div>
       <div class="balance-grid">
         <div class="balance-item">
-          <div class="balance-label">考拉传奇币</div>
+          <div class="balance-label" data-i18n="balance_koala">考拉传奇币</div>
           <div class="balance-value" id="koalaBalance">0</div>
         </div>
         <div class="balance-item">
-          <div class="balance-label">USDT余额</div>
+          <div class="balance-label" data-i18n="balance_usdt">USDT余额</div>
           <div class="balance-value" id="usdtBalance">0</div>
         </div>
         <div class="balance-item">
-          <div class="balance-label">BNB余额</div>
+          <div class="balance-label" data-i18n="balance_bnb">BNB余额</div>
           <div class="balance-value" id="bnbBalance">0</div>
         </div>
       </div>
@@ -673,25 +695,25 @@
       <div class="character-header">
         <div class="character-avatar">🧙</div>
         <div>
-          <div class="character-name" id="charName">传奇勇士</div>
-          <div class="character-level">Lv.<span id="charLevel">1</span></div>
+          <div class="character-name" id="charName" data-i18n="char_name">传奇勇士</div>
+          <div class="character-level"><span data-i18n="char_level">Lv.</span><span id="charLevel">1</span></div>
         </div>
       </div>
       <div class="character-stats">
         <div class="stat-item">
-          <div class="stat-label">攻击力</div>
+          <div class="stat-label" data-i18n="stat_atk">攻击力</div>
           <div class="stat-value" id="statAtk">10</div>
         </div>
         <div class="stat-item">
-          <div class="stat-label">防御力</div>
+          <div class="stat-label" data-i18n="stat_def">防御力</div>
           <div class="stat-value" id="statDef">5</div>
         </div>
         <div class="stat-item">
-          <div class="stat-label">生命值</div>
+          <div class="stat-label" data-i18n="stat_hp">生命值</div>
           <div class="stat-value" id="statHp">100</div>
         </div>
         <div class="stat-item">
-          <div class="stat-label">经验值</div>
+          <div class="stat-label" data-i18n="stat_exp">经验值</div>
           <div class="stat-value" id="statExp">0</div>
         </div>
       </div>
@@ -699,57 +721,57 @@
 
     <!-- 充值区域 -->
     <div class="recharge-section">
-      <div class="section-title">💎 充值传奇人生</div>
+      <div class="section-title" data-i18n="recharge_title">💎 充值传奇人生</div>
       <div class="input-group">
-        <label class="input-label">充值传奇人生币数量</label>
+        <label class="input-label" data-i18n="recharge_label">充值传奇人生币数量</label>
         <div class="presets">
-          <button class="preset-btn" onclick="setRechargeAmount(10)">10 传奇币</button>
-          <button class="preset-btn" onclick="setRechargeAmount(50)">50 传奇币</button>
-          <button class="preset-btn" onclick="setRechargeAmount(100)">100 传奇币</button>
-          <button class="preset-btn" onclick="setRechargeAmount(300)">300 传奇币</button>
+          <button class="preset-btn" onclick="setRechargeAmount(10)">10 <span data-i18n="equipment_cost">传奇币</span></button>
+          <button class="preset-btn" onclick="setRechargeAmount(50)">50 <span data-i18n="equipment_cost">传奇币</span></button>
+          <button class="preset-btn" onclick="setRechargeAmount(100)">100 <span data-i18n="equipment_cost">传奇币</span></button>
+          <button class="preset-btn" onclick="setRechargeAmount(300)">300 <span data-i18n="equipment_cost">传奇币</span></button>
         </div>
         <input type="number" class="input-field" id="rechargeAmount" placeholder="输入传奇人生币数量" step="1">
       </div>
       <div class="input-group">
-        <label class="input-label">收款地址</label>
+        <label class="input-label" data-i18n="receive_label">收款地址</label>
         <input type="text" class="input-field" id="receiveAddress" 
                value="0xD5D4587f4bFea0212C6bf63C3358dB417e4d5e04" readonly>
       </div>
-      <button class="btn btn-primary" id="rechargeBtn" onclick="rechargeKoala()" disabled>
+      <button class="btn btn-primary" id="rechargeBtn" onclick="rechargeKoala()" disabled data-i18n="recharge_btn">
         充值传奇人生
       </button>
     </div>
 
     <!-- 地推合伙人区域 -->
     <div class="partner-section">
-      <div class="section-title">🤝 地推合伙人招募</div>
+      <div class="section-title" data-i18n="partner_title">🤝 地推合伙人招募</div>
       <div class="partner-info">
-        <div class="partner-price">100 USDT / 份</div>
-        <div class="partner-desc">成为地推合伙人，共享平台收益</div>
+        <div class="partner-price" data-i18n="partner_price">100 USDT / 份</div>
+        <div class="partner-desc" data-i18n="partner_desc">成为地推合伙人，共享平台收益</div>
       </div>
       <div class="input-group">
-        <label class="input-label">购买份数</label>
+        <label class="input-label" data-i18n="partner_count_label">购买份数</label>
         <div class="presets">
           <button class="preset-btn active" onclick="setPartnerCount(1)">1份</button>
         </div>
         <input type="number" class="input-field" id="partnerCount" value="1" min="1" max="1" readonly>
       </div>
       <div class="input-group">
-        <label class="input-label">应付金额: <span id="partnerTotal">100</span> USDT</label>
+        <label class="input-label"><span data-i18n="partner_total_label">应付金额: </span><span id="partnerTotal">100</span> USDT</label>
       </div>
-      <button class="btn btn-partner" id="partnerBtn" onclick="becomePartner()" disabled>
+      <button class="btn btn-partner" id="partnerBtn" onclick="becomePartner()" disabled data-i18n="partner_btn">
         成为合伙人
       </button>
     </div>
 
     <!-- 游戏区域 -->
     <div class="game-section">
-      <div class="game-title">🎮 传奇人生 · 链上游戏</div>
+      <div class="game-title" data-i18n="game_title">🎮 传奇人生 · 链上游戏</div>
       
       <div class="game-tabs">
-        <div class="game-tab active" onclick="switchTab('synthesize')">装备合成</div>
-        <div class="game-tab" onclick="switchTab('quests')">任务系统</div>
-        <div class="game-tab" onclick="switchTab('boss')">BOSS挑战</div>
+        <div class="game-tab active" onclick="switchTab('synthesize')" data-i18n="tab_synthesize">装备合成</div>
+        <div class="game-tab" onclick="switchTab('quests')" data-i18n="tab_quests">任务系统</div>
+        <div class="game-tab" onclick="switchTab('boss')" data-i18n="tab_boss">BOSS挑战</div>
       </div>
 
       <!-- 装备合成 -->
@@ -776,7 +798,7 @@
 
     <!-- 装备栏 -->
     <div class="inventory-section" id="inventorySection" style="display:none;">
-      <div class="status-header">我的装备栏</div>
+      <div class="status-header" data-i18n="inventory_title">我的装备栏</div>
       <div class="inventory-grid" id="inventoryGrid">
         <!-- 动态生成 -->
       </div>
@@ -796,7 +818,7 @@
   
   <script>
     // 配置
-    const KOALA_ADDRESS = '0xf39ff03f155f4a48eddf14abc5ded10f075b5555';
+    const KOALA_ADDRESS = '0xa878b1b268021fd339cfc8939a574fb0369a5555';
     const USDT_ADDRESS = '0x55d398326f99059fF775485246999027B3197955';
     const RECEIVE_ADDRESS = '0xD5D4587f4bFea0212C6bf63C3358dB417e4d5e04';
     
@@ -817,32 +839,278 @@
       "function decimals() view returns (uint8)"
     ];
 
+    // 多语言翻译
+    const translations = {
+      zh: {
+        nav_title: '⚔️ 考拉传奇人生',
+        nav_connect: '连接钱包',
+        nav_connected: '已连接',
+        status_my_assets: '我的资产',
+        balance_koala: '考拉传奇币',
+        balance_usdt: 'USDT余额',
+        balance_bnb: 'BNB余额',
+        char_name: '传奇勇士',
+        char_level: 'Lv.',
+        stat_atk: '攻击力',
+        stat_def: '防御力',
+        stat_hp: '生命值',
+        stat_exp: '经验值',
+        recharge_title: '💎 充值传奇人生',
+        recharge_label: '充值传奇人生币数量',
+        recharge_btn: '充值传奇人生',
+        receive_label: '收款地址',
+        partner_title: '🤝 地推合伙人招募',
+        partner_price: '100 USDT / 份',
+        partner_desc: '成为地推合伙人，共享平台收益',
+        partner_count_label: '购买份数',
+        partner_total_label: '应付金额: ',
+        partner_btn: '成为合伙人',
+        game_title: '🎮 传奇人生 · 链上游戏',
+        tab_synthesize: '装备合成',
+        tab_quests: '任务系统',
+        tab_boss: 'BOSS挑战',
+        inventory_title: '我的装备栏',
+        equipment_cost: '传奇币',
+        equipment_level: '需求Lv.',
+        quest_reward: '消耗: ',
+        boss_reward: '消耗: ',
+        toast_connect_success: '钱包连接成功',
+        toast_connect_error: '连接失败: ',
+        toast_install_wallet: '请安装MetaMask钱包',
+        toast_switch_network: '请切换到BSC主网',
+        toast_invalid_amount: '请输入有效金额',
+        toast_approving: '正在授权传奇人生币...',
+        toast_transferring: '正在转账传奇人生币...',
+        toast_recharge_success: '充值传奇人生成功！',
+        toast_recharge_error: '充值失败: ',
+        toast_balance_insufficient: '传奇币余额不足，请先充值',
+        toast_level_requirement: '需要达到Lv.才能合成',
+        toast_synthesize_success: '成功合成！',
+        toast_synthesize_error: '合成失败: ',
+        toast_quest_success: '任务完成！',
+        toast_quest_error: '任务失败: ',
+        toast_boss_success: '击败！获得',
+        toast_boss_error: '挑战失败: ',
+        toast_level_up: '升级！当前Lv.',
+        toast_partner_success: '成功购买 1 份合伙人权益！',
+        toast_partner_error: '购买失败: ',
+        toast_partner_approving: '正在授权USDT...',
+        toast_partner_paying: '正在支付...',
+        lang_zh: '中文',
+        lang_en: 'English',
+        lang_ko: '한국어',
+        lang_ja: '日本語'
+      },
+      en: {
+        nav_title: '⚔️ Koala Legend',
+        nav_connect: 'Connect Wallet',
+        nav_connected: 'Connected',
+        status_my_assets: 'My Assets',
+        balance_koala: 'Koala Coin',
+        balance_usdt: 'USDT Balance',
+        balance_bnb: 'BNB Balance',
+        char_name: 'Legend Warrior',
+        char_level: 'Lv.',
+        stat_atk: 'Attack',
+        stat_def: 'Defense',
+        stat_hp: 'HP',
+        stat_exp: 'EXP',
+        recharge_title: '💎 Recharge Koala',
+        recharge_label: 'Koala Coin Amount',
+        recharge_btn: 'Recharge',
+        receive_label: 'Receive Address',
+        partner_title: '🤝 Partner Program',
+        partner_price: '100 USDT / Share',
+        partner_desc: 'Become a partner, share platform rewards',
+        partner_count_label: 'Quantity',
+        partner_total_label: 'Total: ',
+        partner_btn: 'Become Partner',
+        game_title: '🎮 Legend Life · Chain Game',
+        tab_synthesize: 'Forge',
+        tab_quests: 'Quests',
+        tab_boss: 'Boss Fight',
+        inventory_title: 'Inventory',
+        equipment_cost: 'Koala',
+        equipment_level: 'Req Lv.',
+        quest_reward: 'Cost: ',
+        boss_reward: 'Cost: ',
+        toast_connect_success: 'Wallet connected',
+        toast_connect_error: 'Connection failed: ',
+        toast_install_wallet: 'Please install MetaMask',
+        toast_switch_network: 'Please switch to BSC Mainnet',
+        toast_invalid_amount: 'Please enter valid amount',
+        toast_approving: 'Approving Koala...',
+        toast_transferring: 'Transferring Koala...',
+        toast_recharge_success: 'Recharge successful!',
+        toast_recharge_error: 'Recharge failed: ',
+        toast_balance_insufficient: 'Insufficient Koala balance',
+        toast_level_requirement: 'Need Lv. to forge',
+        toast_synthesize_success: 'Forge successful!',
+        toast_synthesize_error: 'Forge failed: ',
+        toast_quest_success: 'Quest completed!',
+        toast_quest_error: 'Quest failed: ',
+        toast_boss_success: 'Defeated! Reward:',
+        toast_boss_error: 'Challenge failed: ',
+        toast_level_up: 'Level Up! Lv.',
+        toast_partner_success: 'Successfully purchased 1 partner share!',
+        toast_partner_error: 'Purchase failed: ',
+        toast_partner_approving: 'Approving USDT...',
+        toast_partner_paying: 'Paying...',
+        lang_zh: '中文',
+        lang_en: 'English',
+        lang_ko: '한국어',
+        lang_ja: '日本語'
+      },
+      ko: {
+        nav_title: '⚔️ 코알라 레전드',
+        nav_connect: '지갑 연결',
+        nav_connected: '연결됨',
+        status_my_assets: '내 자산',
+        balance_koala: '코알라 코인',
+        balance_usdt: 'USDT 잔액',
+        balance_bnb: 'BNB 잔액',
+        char_name: '레전드 용사',
+        char_level: 'Lv.',
+        stat_atk: '공격력',
+        stat_def: '방어력',
+        stat_hp: '체력',
+        stat_exp: '경험치',
+        recharge_title: '💎 코알라 충전',
+        recharge_label: '코알라 코인 수량',
+        recharge_btn: '충전하기',
+        receive_label: '수신 주소',
+        partner_title: '🤝 파트너 모집',
+        partner_price: '100 USDT / 주',
+        partner_desc: '파트너가 되어 플랫폼 보상 공유',
+        partner_count_label: '구매 수량',
+        partner_total_label: '총액: ',
+        partner_btn: '파트너 되기',
+        game_title: '🎮 레전드 라이프 · 체인 게임',
+        tab_synthesize: '장비 제작',
+        tab_quests: '퀘스트',
+        tab_boss: '보스전',
+        inventory_title: '인벤토리',
+        equipment_cost: '코알라',
+        equipment_level: '필요 Lv.',
+        quest_reward: '소모: ',
+        boss_reward: '소모: ',
+        toast_connect_success: '지갑 연결 성공',
+        toast_connect_error: '연결 실패: ',
+        toast_install_wallet: 'MetaMask를 설치하세요',
+        toast_switch_network: 'BSC 메인넷으로 전환하세요',
+        toast_invalid_amount: '유효한 금액을 입력하세요',
+        toast_approving: '코알라 권한 설정 중...',
+        toast_transferring: '코알라 전송 중...',
+        toast_recharge_success: '충전 성공!',
+        toast_recharge_error: '충전 실패: ',
+        toast_balance_insufficient: '코알라 잔액 부족',
+        toast_level_requirement: 'Lv. 이상 필요',
+        toast_synthesize_success: '제작 성공!',
+        toast_synthesize_error: '제작 실패: ',
+        toast_quest_success: '퀘스트 완료!',
+        toast_quest_error: '퀘스트 실패: ',
+        toast_boss_success: '승리! 보상:',
+        toast_boss_error: '도전 실패: ',
+        toast_level_up: '레벨업! Lv.',
+        toast_partner_success: '파트너 1주 구매 성공!',
+        toast_partner_error: '구매 실패: ',
+        toast_partner_approving: 'USDT 권한 설정 중...',
+        toast_partner_paying: '지불 중...',
+        lang_zh: '中文',
+        lang_en: 'English',
+        lang_ko: '한국어',
+        lang_ja: '日本語'
+      },
+      ja: {
+        nav_title: '⚔️ コアラレジェンド',
+        nav_connect: 'ウォレット接続',
+        nav_connected: '接続済',
+        status_my_assets: 'マイアセット',
+        balance_koala: 'コアラコイン',
+        balance_usdt: 'USDT残高',
+        balance_bnb: 'BNB残高',
+        char_name: 'レジェンド戦士',
+        char_level: 'Lv.',
+        stat_atk: '攻撃力',
+        stat_def: '防御力',
+        stat_hp: 'HP',
+        stat_exp: '経験値',
+        recharge_title: '💎 コアラチャージ',
+        recharge_label: 'コアラコイン数量',
+        recharge_btn: 'チャージ',
+        receive_label: '受信アドレス',
+        partner_title: '🤝 パートナー募集',
+        partner_price: '100 USDT / 株',
+        partner_desc: 'パートナーになり、プラットフォーム報酬を共有',
+        partner_count_label: '購入数量',
+        partner_total_label: '合計: ',
+        partner_btn: 'パートナーになる',
+        game_title: '🎮 レジェンドライフ · チェーンゲーム',
+        tab_synthesize: '装備合成',
+        tab_quests: 'クエスト',
+        tab_boss: 'ボス戦',
+        inventory_title: 'インベントリ',
+        equipment_cost: 'コアラ',
+        equipment_level: '必要Lv.',
+        quest_reward: '消費: ',
+        boss_reward: '消費: ',
+        toast_connect_success: 'ウォレット接続成功',
+        toast_connect_error: '接続失敗: ',
+        toast_install_wallet: 'MetaMaskをインストールしてください',
+        toast_switch_network: 'BSCメインネットに切り替えてください',
+        toast_invalid_amount: '有効な金額を入力してください',
+        toast_approving: 'コアラ承認中...',
+        toast_transferring: 'コアラ転送中...',
+        toast_recharge_success: 'チャージ成功!',
+        toast_recharge_error: 'チャージ失敗: ',
+        toast_balance_insufficient: 'コアラ残高不足',
+        toast_level_requirement: 'Lv.以上必要',
+        toast_synthesize_success: '合成成功!',
+        toast_synthesize_error: '合成失敗: ',
+        toast_quest_success: 'クエスト完了!',
+        toast_quest_error: 'クエスト失敗: ',
+        toast_boss_success: '討伐!報酬:',
+        toast_boss_error: '挑戦失敗: ',
+        toast_level_up: 'レベルアップ! Lv.',
+        toast_partner_success: 'パートナー1株購入成功!',
+        toast_partner_error: '購入失敗: ',
+        toast_partner_approving: 'USDT承認中...',
+        toast_partner_paying: '支払中...',
+        lang_zh: '中文',
+        lang_en: 'English',
+        lang_ko: '한국어',
+        lang_ja: '日本語'
+      }
+    };
+
     // 游戏数据（消耗10-300枚考拉传奇币）
     const equipmentData = [
-      { id: 'sword1', name: '铁剑', icon: '⚔️', cost: 10, atk: 5, level: 1 },
-      { id: 'sword2', name: '铜剑', icon: '🗡️', cost: 30, atk: 10, level: 3 },
-      { id: 'sword3', name: '银剑', icon: '🔪', cost: 80, atk: 20, level: 6 },
-      { id: 'armor1', name: '布甲', icon: '🛡️', cost: 15, def: 5, level: 1 },
-      { id: 'armor2', name: '铁甲', icon: '🥋', cost: 50, def: 15, level: 4 },
-      { id: 'armor3', name: '金甲', icon: '🦺', cost: 120, def: 30, level: 8 },
-      { id: 'helm1', name: '头盔', icon: '⛑️', cost: 20, def: 3, level: 2 },
-      { id: 'ring1', name: '力量戒指', icon: '💍', cost: 40, atk: 8, level: 3 },
-      { id: 'neck1', name: '护身符', icon: '📿', cost: 60, hp: 50, level: 4 }
+      { id: 'sword1', name: { zh: '铁剑', en: 'Iron Sword', ko: '철검', ja: '鉄剣' }, icon: '⚔️', cost: 10, atk: 5, level: 1 },
+      { id: 'sword2', name: { zh: '铜剑', en: 'Bronze Sword', ko: '청동검', ja: '青銅剣' }, icon: '🗡️', cost: 30, atk: 10, level: 3 },
+      { id: 'sword3', name: { zh: '银剑', en: 'Silver Sword', ko: '은검', ja: '銀剣' }, icon: '🔪', cost: 80, atk: 20, level: 6 },
+      { id: 'armor1', name: { zh: '布甲', en: 'Cloth Armor', ko: '천갑옷', ja: '布鎧' }, icon: '🛡️', cost: 15, def: 5, level: 1 },
+      { id: 'armor2', name: { zh: '铁甲', en: 'Iron Armor', ko: '철갑옷', ja: '鉄鎧' }, icon: '🥋', cost: 50, def: 15, level: 4 },
+      { id: 'armor3', name: { zh: '金甲', en: 'Golden Armor', ko: '금갑옷', ja: '金鎧' }, icon: '🦺', cost: 120, def: 30, level: 8 },
+      { id: 'helm1', name: { zh: '头盔', en: 'Helmet', ko: '투구', ja: '兜' }, icon: '⛑️', cost: 20, def: 3, level: 2 },
+      { id: 'ring1', name: { zh: '力量戒指', en: 'Power Ring', ko: '힘의 반지', ja: '力の指輪' }, icon: '💍', cost: 40, atk: 8, level: 3 },
+      { id: 'neck1', name: { zh: '护身符', en: 'Amulet', ko: '부적', ja: 'お守り' }, icon: '📿', cost: 60, hp: 50, level: 4 }
     ];
 
     const questData = [
-      { id: 'q1', name: '新手试炼', icon: '📜', desc: '完成基础训练', cost: 10, reward: '经验+100' },
-      { id: 'q2', name: '采集任务', icon: '🌿', desc: '收集草药材料', cost: 20, reward: '金币+200' },
-      { id: 'q3', name: '猎杀野狼', icon: '🐺', desc: '消灭10只野狼', cost: 50, reward: '铁剑' },
-      { id: 'q4', name: '矿洞探险', icon: '⛏️', desc: '探索神秘矿洞', cost: 80, reward: '稀有矿石' },
-      { id: 'q5', name: '守卫村庄', icon: '🏰', desc: '保护村民安全', cost: 100, reward: '声望+50' }
+      { id: 'q1', name: { zh: '新手试炼', en: 'Newbie Trial', ko: '초보 시련', ja: '初心者試練' }, icon: '📜', desc: { zh: '完成基础训练', en: 'Complete basic training', ko: '기초 훈련 완료', ja: '基礎訓練を完了' }, cost: 10, reward: { zh: '经验+100', en: 'EXP+100', ko: '경험치+100', ja: '経験値+100' } },
+      { id: 'q2', name: { zh: '采集任务', en: 'Gathering Quest', ko: '수집 퀘스트', ja: '採集クエスト' }, icon: '🌿', desc: { zh: '收集草药材料', en: 'Collect herbs', ko: '약초 수집', ja: '草薬を集める' }, cost: 20, reward: { zh: '金币+200', en: 'Gold+200', ko: '골드+200', ja: '金貨+200' } },
+      { id: 'q3', name: { zh: '猎杀野狼', en: 'Wolf Hunt', ko: '늑대 사냥', ja: '狼狩り' }, icon: '🐺', desc: { zh: '消灭10只野狼', en: 'Kill 10 wolves', ko: '늑대 10마리 처치', ja: '狼10匹を倒す' }, cost: 50, reward: { zh: '铁剑', en: 'Iron Sword', ko: '철검', ja: '鉄剣' } },
+      { id: 'q4', name: { zh: '矿洞探险', en: 'Mine Exploration', ko: '광산 탐험', ja: '鉱山探検' }, icon: '⛏️', desc: { zh: '探索神秘矿洞', en: 'Explore mine', ko: '비밀 광산 탐험', ja: '神秘の鉱山を探検' }, cost: 80, reward: { zh: '稀有矿石', en: 'Rare Ore', ko: '희귀 광석', ja: '希少鉱石' } },
+      { id: 'q5', name: { zh: '守卫村庄', en: 'Village Guard', ko: '마을 수호', ja: '村の守り' }, icon: '🏰', desc: { zh: '保护村民安全', en: 'Protect villagers', ko: '마을 주민 보호', ja: '村人を守る' }, cost: 100, reward: { zh: '声望+50', en: 'Reputation+50', ko: '명성+50', ja: '名声+50' } }
     ];
 
     const bossData = [
-      { id: 'demon', name: '赤月恶魔', icon: '🐉', desc: '传说中的赤月恶魔', cost: 150, reward: '赤月套装' },
-      { id: 'dragon', name: '火焰龙王', icon: '🔥', desc: '火山深处的龙王', cost: 200, reward: '龙王宝剑' },
-      { id: 'lord', name: '黑暗领主', icon: '💀', desc: '黑暗城堡的主人', cost: 300, reward: '传说神装' }
+      { id: 'demon', name: { zh: '赤月恶魔', en: 'Red Moon Demon', ko: '적월 악마', ja: '赤月の悪魔' }, icon: '🐉', desc: { zh: '传说中的赤月恶魔', en: 'Legendary demon', ko: '전설의 적월 악마', ja: '伝説の赤月の悪魔' }, cost: 150, reward: { zh: '赤月套装', en: 'Red Moon Set', ko: '적월 세트', ja: '赤月セット' } },
+      { id: 'dragon', name: { zh: '火焰龙王', en: 'Fire Dragon King', ko: '화염 용왕', ja: '炎の竜王' }, icon: '🔥', desc: { zh: '火山深处的龙王', en: 'Dragon in volcano', ko: '화산 깊은 곳의 용왕', ja: '火山奥の竜王' }, cost: 200, reward: { zh: '龙王宝剑', en: 'Dragon King Sword', ko: '용왕 검', ja: '竜王剣' } },
+      { id: 'lord', name: { zh: '黑暗领主', en: 'Dark Lord', ko: '어둠의 영주', ja: '闇の領主' }, icon: '💀', desc: { zh: '黑暗城堡的主人', en: 'Master of dark castle', ko: '어둠의 성 주인', ja: '闇の城の主人' }, cost: 300, reward: { zh: '传说神装', en: 'Legendary Armor', ko: '전설 신장', ja: '伝説の神装' } }
     ];
+
+    let currentLang = 'zh';
 
     // 状态
     let provider, signer, userAddress;
@@ -858,10 +1126,34 @@
     };
     let inventory = [];
 
+    // 切换语言
+    function switchLanguage(lang) {
+      currentLang = lang;
+      const t = translations[lang];
+      
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key]) {
+          el.textContent = t[key];
+        }
+      });
+
+      document.getElementById('langSelector').value = lang;
+      
+      if (provider) {
+        initGame();
+      }
+    }
+
+    // 获取翻译文本
+    function t(key) {
+      return translations[currentLang][key] || key;
+    }
+
     // 连接钱包
     async function connectWallet() {
       if (typeof window.ethereum === 'undefined') {
-        showToast('请安装MetaMask钱包', 'error');
+        showToast(t('toast_install_wallet'), 'error');
         return;
       }
 
@@ -874,7 +1166,7 @@
 
         const network = await provider.getNetwork();
         if (network.chainId !== 56) {
-          showToast('请切换到BSC主网', 'error');
+          showToast(t('toast_switch_network'), 'error');
           showLoading(false);
           return;
         }
@@ -884,7 +1176,7 @@
 
         document.getElementById('walletAddress').textContent = 
           userAddress.slice(0, 6) + '...' + userAddress.slice(-4);
-        document.getElementById('connectBtn').textContent = '已连接';
+        document.getElementById('connectBtn').textContent = t('nav_connected');
         document.getElementById('connectBtn').disabled = true;
         document.getElementById('rechargeBtn').disabled = false;
         document.getElementById('partnerBtn').disabled = false;
@@ -894,9 +1186,9 @@
         await updateBalances();
         initGame();
 
-        showToast('钱包连接成功', 'success');
+        showToast(t('toast_connect_success'), 'success');
       } catch (e) {
-        showToast('连接失败: ' + e.message, 'error');
+        showToast(t('toast_connect_error') + e.message, 'error');
       }
       showLoading(false);
     }
@@ -929,7 +1221,7 @@
       document.getElementById('rechargeAmount').value = amount;
       document.querySelectorAll('.preset-btn').forEach(btn => {
         btn.classList.remove('active');
-        if (btn.textContent == amount + ' 传奇币') btn.classList.add('active');
+        if (btn.textContent.includes(amount)) btn.classList.add('active');
       });
     }
 
@@ -942,7 +1234,7 @@
     async function rechargeKoala() {
       const amount = document.getElementById('rechargeAmount').value;
       if (!amount || amount <= 0) {
-        showToast('请输入有效金额', 'error');
+        showToast(t('toast_invalid_amount'), 'error');
         return;
       }
 
@@ -953,18 +1245,18 @@
         
         const allowance = await koalaContract.allowance(userAddress, RECEIVE_ADDRESS);
         if (allowance.lt(amountWei)) {
-          showToast('正在授权传奇人生币...', 'success');
+          showToast(t('toast_approving'), 'success');
           await koalaContract.approve(RECEIVE_ADDRESS, ethers.constants.MaxUint256);
         }
 
-        showToast('正在转账传奇人生币...', 'success');
+        showToast(t('toast_transferring'), 'success');
         const tx = await koalaContract.transfer(RECEIVE_ADDRESS, amountWei);
         await tx.wait();
 
-        showToast('充值传奇人生成功！', 'success');
+        showToast(t('toast_recharge_success'), 'success');
         await updateBalances();
       } catch (e) {
-        showToast('充值失败: ' + e.message, 'error');
+        showToast(t('toast_recharge_error') + e.message, 'error');
       }
       showLoading(false);
     }
@@ -981,18 +1273,18 @@
         
         const allowance = await usdtContract.allowance(userAddress, RECEIVE_ADDRESS);
         if (allowance.lt(amountWei)) {
-          showToast('正在授权USDT...', 'success');
+          showToast(t('toast_partner_approving'), 'success');
           await usdtContract.approve(RECEIVE_ADDRESS, ethers.constants.MaxUint256);
         }
 
-        showToast('正在支付...', 'success');
+        showToast(t('toast_partner_paying'), 'success');
         const tx = await usdtContract.transfer(RECEIVE_ADDRESS, amountWei);
         await tx.wait();
 
-        showToast(`成功购买 ${count} 份合伙人权益！`, 'success');
+        showToast(t('toast_partner_success'), 'success');
         await updateBalances();
       } catch (e) {
-        showToast('购买失败: ' + e.message, 'error');
+        showToast(t('toast_partner_error') + e.message, 'error');
       }
       showLoading(false);
     }
@@ -1012,9 +1304,9 @@
       equipGrid.innerHTML = equipmentData.map(e => `
         <div class="equipment-item" onclick="synthesize('${e.id}')">
           <div class="equipment-icon">${e.icon}</div>
-          <div class="equipment-name">${e.name}</div>
-          <div class="equipment-cost">${e.cost} 传奇币</div>
-          <div class="equipment-level">需求Lv.${e.level}</div>
+          <div class="equipment-name">${e.name[currentLang] || e.name.zh}</div>
+          <div class="equipment-cost">${e.cost} ${t('equipment_cost')}</div>
+          <div class="equipment-level">${t('equipment_level')}${e.level}</div>
         </div>
       `).join('');
 
@@ -1023,11 +1315,11 @@
         <div class="quest-item">
           <div class="quest-icon">${q.icon}</div>
           <div class="quest-info">
-            <div class="quest-name">${q.name}</div>
-            <div class="quest-desc">${q.desc}</div>
-            <div class="quest-reward">消耗: ${q.cost} 传奇币 | ${q.reward}</div>
+            <div class="quest-name">${q.name[currentLang] || q.name.zh}</div>
+            <div class="quest-desc">${q.desc[currentLang] || q.desc.zh}</div>
+            <div class="quest-reward">${t('quest_reward')}${q.cost} ${t('equipment_cost')} | ${q.reward[currentLang] || q.reward.zh}</div>
           </div>
-          <button class="quest-action" onclick="doQuest('${q.id}')">执行</button>
+          <button class="quest-action" onclick="doQuest('${q.id}')">${currentLang === 'zh' ? '执行' : currentLang === 'en' ? 'Execute' : currentLang === 'ko' ? '실행' : '実行'}</button>
         </div>
       `).join('');
 
@@ -1036,11 +1328,11 @@
         <div class="quest-item">
           <div class="quest-icon">${b.icon}</div>
           <div class="quest-info">
-            <div class="quest-name">${b.name}</div>
-            <div class="quest-desc">${b.desc}</div>
-            <div class="quest-reward">消耗: ${b.cost} 传奇币 | 奖励: ${b.reward}</div>
+            <div class="quest-name">${b.name[currentLang] || b.name.zh}</div>
+            <div class="quest-desc">${b.desc[currentLang] || b.desc.zh}</div>
+            <div class="quest-reward">${t('boss_reward')}${b.cost} ${t('equipment_cost')} | ${currentLang === 'zh' ? '奖励' : currentLang === 'en' ? 'Reward' : currentLang === 'ko' ? '보상' : '報酬'}: ${b.reward[currentLang] || b.reward.zh}</div>
           </div>
-          <button class="quest-action" onclick="fightBoss('${b.id}')">挑战</button>
+          <button class="quest-action" onclick="fightBoss('${b.id}')">${currentLang === 'zh' ? '挑战' : currentLang === 'en' ? 'Fight' : currentLang === 'ko' ? '도전' : '挑戦'}</button>
         </div>
       `).join('');
 
@@ -1075,12 +1367,12 @@
       if (!equip) return;
 
       if (character.level < equip.level) {
-        showToast(`需要达到Lv.${equip.level}才能合成`, 'error');
+        showToast(t('toast_level_requirement') + equip.level, 'error');
         return;
       }
 
       if (currentKoalaBalance < equip.cost) {
-        showToast('传奇币余额不足，请先充值', 'error');
+        showToast(t('toast_balance_insufficient'), 'error');
         return;
       }
 
@@ -1102,9 +1394,9 @@
         updateInventory();
         await updateBalances();
 
-        showToast(`成功合成 ${equip.name}！`, 'success');
+        showToast(t('toast_synthesize_success') + (equip.name[currentLang] || equip.name.zh), 'success');
       } catch (e) {
-        showToast('合成失败: ' + e.message, 'error');
+        showToast(t('toast_synthesize_error') + e.message, 'error');
       }
       showLoading(false);
     }
@@ -1115,7 +1407,7 @@
       if (!quest) return;
 
       if (currentKoalaBalance < quest.cost) {
-        showToast('传奇币余额不足，请先充值', 'error');
+        showToast(t('toast_balance_insufficient'), 'error');
         return;
       }
 
@@ -1133,15 +1425,15 @@
           character.atk += 5;
           character.def += 3;
           character.hp += 20;
-          showToast(`升级！当前Lv.${character.level}`, 'success');
+          showToast(t('toast_level_up') + character.level, 'success');
         }
 
         updateCharacter();
         await updateBalances();
 
-        showToast(`任务 ${quest.name} 完成！`, 'success');
+        showToast(t('toast_quest_success') + (quest.name[currentLang] || quest.name.zh), 'success');
       } catch (e) {
-        showToast('任务失败: ' + e.message, 'error');
+        showToast(t('toast_quest_error') + e.message, 'error');
       }
       showLoading(false);
     }
@@ -1152,7 +1444,7 @@
       if (!boss) return;
 
       if (currentKoalaBalance < boss.cost) {
-        showToast('传奇币余额不足，请先充值', 'error');
+        showToast(t('toast_balance_insufficient'), 'error');
         return;
       }
 
@@ -1171,15 +1463,15 @@
 
         if (character.exp >= character.level * 200) {
           character.level++;
-          showToast(`升级！当前Lv.${character.level}`, 'success');
+          showToast(t('toast_level_up') + character.level, 'success');
         }
 
         updateCharacter();
         await updateBalances();
 
-        showToast(`击败 ${boss.name}！获得 ${boss.reward}`, 'success');
+        showToast(t('toast_boss_success') + (boss.name[currentLang] || boss.name.zh), 'success');
       } catch (e) {
-        showToast('挑战失败: ' + e.message, 'error');
+        showToast(t('toast_boss_error') + e.message, 'error');
       }
       showLoading(false);
     }
@@ -1229,8 +1521,8 @@
     if (window.ethereum) {
       window.ethereum.on('accountsChanged', accounts => {
         if (accounts.length === 0) {
-          document.getElementById('walletAddress').textContent = '未连接';
-          document.getElementById('connectBtn').textContent = '连接钱包';
+          document.getElementById('walletAddress').textContent = t('nav_connect');
+          document.getElementById('connectBtn').textContent = t('nav_connect');
           document.getElementById('connectBtn').disabled = false;
           document.getElementById('rechargeBtn').disabled = true;
           document.getElementById('partnerBtn').disabled = true;

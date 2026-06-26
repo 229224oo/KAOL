@@ -57,6 +57,26 @@
       text-overflow: ellipsis;
     }
 
+    .sound-btn {
+      width: 36px;
+      height: 36px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255, 215, 0, 0.2);
+      color: #ffd700;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sound-btn:hover {
+      background: rgba(255, 215, 0, 0.4);
+      transform: scale(1.1);
+    }
+
     .btn {
       padding: 10px 20px;
       border: none;
@@ -339,6 +359,168 @@
 
     .game-panel.active {
       display: block;
+    }
+
+    /* 战力排行榜 */
+    .leaderboard-container {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid rgba(255, 215, 0, 0.3);
+    }
+
+    .leaderboard-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #ffd700;
+      text-align: center;
+      margin-bottom: 15px;
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+    }
+
+    .leaderboard-header {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+      font-size: 12px;
+      color: #888;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 10px;
+    }
+
+    .leaderboard-list {
+      list-style: none;
+      padding: 0;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    .leaderboard-item {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+      align-items: center;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 5px;
+      transition: background 0.2s;
+    }
+
+    .leaderboard-item:hover {
+      background: rgba(255, 215, 0, 0.1);
+    }
+
+    .leaderboard-item.top-1 {
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 215, 0, 0.05));
+      border: 1px solid rgba(255, 215, 0, 0.3);
+    }
+
+    .leaderboard-item.top-2 {
+      background: linear-gradient(135deg, rgba(192, 192, 192, 0.2), rgba(192, 192, 192, 0.05));
+      border: 1px solid rgba(192, 192, 192, 0.3);
+    }
+
+    .leaderboard-item.top-3 {
+      background: linear-gradient(135deg, rgba(205, 127, 50, 0.2), rgba(205, 127, 50, 0.05));
+      border: 1px solid rgba(205, 127, 50, 0.3);
+    }
+
+    .rank-number {
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .rank-number.top-1 { color: #ffd700; }
+    .rank-number.top-2 { color: #c0c0c0; }
+    .rank-number.top-3 { color: #cd7f32; }
+
+    .my-rank {
+      margin-top: 15px;
+      padding: 10px;
+      background: rgba(128, 0, 255, 0.2);
+      border-radius: 8px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    /* 技能特效 */
+    @keyframes slash {
+      0% { transform: translateX(0) rotate(0deg); opacity: 1; }
+      50% { transform: translateX(80px) rotate(45deg); opacity: 0.8; }
+      100% { transform: translateX(150px) rotate(90deg); opacity: 0; }
+    }
+
+    .slash-effect {
+      position: absolute;
+      width: 80px;
+      height: 5px;
+      background: linear-gradient(90deg, #ff4500, #ffd700, transparent);
+      border-radius: 3px;
+      box-shadow: 0 0 15px #ff4500, 0 0 30px #ffd700;
+      z-index: 100;
+      animation: slash 0.4s ease-out forwards;
+    }
+
+    @keyframes magicCircle {
+      0% { transform: scale(0) rotate(0deg); opacity: 1; }
+      50% { transform: scale(1.2) rotate(180deg); opacity: 0.8; }
+      100% { transform: scale(1) rotate(360deg); opacity: 0; }
+    }
+
+    .magic-circle {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border: 3px solid #9333ea;
+      border-radius: 50%;
+      z-index: 100;
+      animation: magicCircle 0.6s ease-out forwards;
+    }
+
+    .magic-circle::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 60px;
+      height: 60px;
+      border: 2px solid #a855f7;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .magic-circle::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 30px;
+      height: 30px;
+      background: #9333ea;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 20px #9333ea;
+    }
+
+    @keyframes arrowFly {
+      0% { transform: translateX(0); opacity: 1; }
+      100% { transform: translateX(300px); opacity: 0; }
+    }
+
+    .arrow-projectile {
+      position: absolute;
+      font-size: 20px;
+      z-index: 100;
+      animation: arrowFly 0.5s linear forwards;
+    }
+
+    @keyframes screenShake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+
+    .shake {
+      animation: screenShake 0.2s ease-in-out;
     }
 
     /* 装备合成 */
@@ -642,6 +824,7 @@
   <nav class="navbar">
     <div class="nav-logo">⚔️ 考拉传奇人生</div>
     <div class="nav-wallet">
+      <button class="sound-btn" id="soundBtn" onclick="SoundManager.toggleMute()" title="关闭音效">🎵</button>
       <span class="wallet-address" id="walletAddress">未连接</span>
       <button class="btn btn-connect" id="connectBtn" onclick="connectWallet()">连接钱包</button>
     </div>
@@ -750,6 +933,7 @@
         <div class="game-tab active" onclick="switchTab('synthesize')">装备合成</div>
         <div class="game-tab" onclick="switchTab('quests')">任务系统</div>
         <div class="game-tab" onclick="switchTab('boss')">BOSS挑战</div>
+        <div class="game-tab" onclick="switchTab('leaderboard')">战力排行</div>
       </div>
 
       <!-- 装备合成 -->
@@ -770,6 +954,24 @@
       <div class="game-panel" id="bossPanel">
         <div class="quest-list" id="bossList">
           <!-- 动态生成 -->
+        </div>
+      </div>
+
+      <!-- 战力排行榜 -->
+      <div class="game-panel" id="leaderboardPanel">
+        <div class="leaderboard-container">
+          <div class="leaderboard-title">🏆 战力排行榜</div>
+          <div class="leaderboard-header">
+            <span>排名</span>
+            <span>玩家</span>
+            <span>职业</span>
+            <span>等级</span>
+            <span>战力</span>
+          </div>
+          <ul class="leaderboard-list" id="leaderboardList">
+            <!-- 动态生成 -->
+          </ul>
+          <div class="my-rank" id="myRankDisplay"></div>
         </div>
       </div>
     </div>
@@ -844,12 +1046,32 @@
       { id: 'lord', name: '黑暗领主', icon: '💀', desc: '黑暗城堡的主人', cost: 300, reward: '传说神装' }
     ];
 
+    const classData = {
+      warrior: { name: '战士', icon: '⚔️', baseAtk: 15, baseDef: 8, baseHp: 120 },
+      mage: { name: '法师', icon: '🧙', baseAtk: 20, baseDef: 5, baseHp: 80 },
+      archer: { name: '弓箭手', icon: '🏹', baseAtk: 18, baseDef: 6, baseHp: 95 }
+    };
+
+    const leaderboardData = [
+      { name: '战神归来', class: 'warrior', level: 50, atk: 500, def: 300, hp: 5000 },
+      { name: '魔法至尊', class: 'mage', level: 48, atk: 600, def: 200, hp: 3500 },
+      { name: '神箭手', class: 'archer', level: 45, atk: 550, def: 250, hp: 4000 },
+      { name: '屠龙勇士', class: 'warrior', level: 42, atk: 450, def: 280, hp: 4500 },
+      { name: '元素使者', class: 'mage', level: 40, atk: 480, def: 180, hp: 3200 },
+      { name: '丛林猎手', class: 'archer', level: 38, atk: 420, def: 220, hp: 3800 },
+      { name: '圣骑士', class: 'warrior', level: 35, atk: 380, def: 320, hp: 5200 },
+      { name: '暗影法师', class: 'mage', level: 33, atk: 400, def: 150, hp: 2800 },
+      { name: '鹰眼', class: 'archer', level: 30, atk: 350, def: 190, hp: 3400 },
+      { name: '狂战士', class: 'warrior', level: 28, atk: 320, def: 200, hp: 4000 }
+    ];
+
     // 状态
     let provider, signer, userAddress;
     let koalaContract, usdtContract;
     let currentKoalaBalance = 0;
     let character = {
       name: '传奇勇士',
+      class: 'warrior',
       level: 1,
       atk: 10,
       def: 5,
@@ -1004,6 +1226,49 @@
       
       event.target.classList.add('active');
       document.getElementById(tab + 'Panel').classList.add('active');
+      
+      if (tab === 'leaderboard') {
+        renderLeaderboard();
+      }
+    }
+
+    function getPower(char) {
+      return char.atk * 2 + char.def * 1.5 + char.hp * 0.1 + char.level * 10;
+    }
+
+    function renderLeaderboard() {
+      const list = document.getElementById('leaderboardList');
+      const myRankDisplay = document.getElementById('myRankDisplay');
+      
+      const sortedData = [...leaderboardData].sort((a, b) => getPower(b) - getPower(a));
+      
+      let html = '';
+      sortedData.forEach((player, index) => {
+        const rank = index + 1;
+        const power = Math.floor(getPower(player));
+        const cls = classData[player.class];
+        const topClass = rank <= 3 ? `top-${rank}` : '';
+        
+        html += `
+          <li class="leaderboard-item ${topClass}">
+            <span class="rank-number ${topClass}">${rank}</span>
+            <span>${player.name}</span>
+            <span>${cls.icon} ${cls.name}</span>
+            <span>Lv.${player.level}</span>
+            <span>${power}</span>
+          </li>
+        `;
+      });
+      
+      list.innerHTML = html;
+      
+      const myPower = Math.floor(getPower(character));
+      const myRank = sortedData.filter(p => getPower(p) > myPower).length + 1;
+      const myCls = classData[character.class];
+      
+      myRankDisplay.innerHTML = `
+        我的排名: 第 ${myRank} 名 | ${myCls.icon} ${character.name} | Lv.${character.level} | 战力: ${myPower}
+      `;
     }
 
     // 初始化游戏
@@ -1156,6 +1421,8 @@
         return;
       }
 
+      showSkillEffect();
+
       showLoading(true);
       try {
         const decimals = await koalaContract.decimals();
@@ -1182,6 +1449,77 @@
         showToast('挑战失败: ' + e.message, 'error');
       }
       showLoading(false);
+    }
+
+    function showSkillEffect() {
+      const gameSection = document.querySelector('.game-section');
+      if (!gameSection) return;
+
+      const charClass = character.class || 'warrior';
+      const effectContainer = document.createElement('div');
+      effectContainer.style.position = 'relative';
+      effectContainer.style.width = '100%';
+      effectContainer.style.height = '200px';
+      effectContainer.style.display = 'flex';
+      effectContainer.style.justifyContent = 'center';
+      effectContainer.style.alignItems = 'center';
+      
+      gameSection.appendChild(effectContainer);
+
+      if (charClass === 'warrior') {
+        const slash1 = document.createElement('div');
+        slash1.className = 'slash-effect';
+        slash1.style.left = '50%';
+        slash1.style.top = '50%';
+        slash1.style.transformOrigin = 'left center';
+        effectContainer.appendChild(slash1);
+
+        setTimeout(() => {
+          const slash2 = document.createElement('div');
+          slash2.className = 'slash-effect';
+          slash2.style.left = '50%';
+          slash2.style.top = '50%';
+          slash2.style.transformOrigin = 'left center';
+          slash2.style.transform = 'rotate(-45deg)';
+          effectContainer.appendChild(slash2);
+        }, 150);
+      } else if (charClass === 'mage') {
+        const circle = document.createElement('div');
+        circle.className = 'magic-circle';
+        circle.style.left = '50%';
+        circle.style.top = '50%';
+        circle.style.transform = 'translate(-50%, -50%)';
+        effectContainer.appendChild(circle);
+
+        setTimeout(() => {
+          const beam = document.createElement('div');
+          beam.style.position = 'absolute';
+          beam.style.width = '4px';
+          beam.style.height = '100px';
+          beam.style.background = 'linear-gradient(0deg, #9333ea, #a855f7, transparent)';
+          beam.style.left = '50%';
+          beam.style.top = '20%';
+          beam.style.transform = 'translateX(-50%)';
+          beam.style.boxShadow = '0 0 20px #9333ea';
+          beam.style.animation = 'slash 0.3s ease-out forwards';
+          effectContainer.appendChild(beam);
+        }, 300);
+      } else if (charClass === 'archer') {
+        const arrow = document.createElement('div');
+        arrow.className = 'arrow-projectile';
+        arrow.textContent = '🏹';
+        arrow.style.left = '20%';
+        arrow.style.top = '50%';
+        arrow.style.transform = 'translateY(-50%)';
+        effectContainer.appendChild(arrow);
+      }
+
+      document.body.classList.add('shake');
+      setTimeout(() => document.body.classList.remove('shake'), 200);
+
+      setTimeout(() => {
+        effectContainer.remove();
+      }, 1000);
     }
 
     // 更新角色信息
@@ -1240,7 +1578,89 @@
       });
     }
 
+    const SoundManager = {
+      audioContext: null,
+      muted: false,
+      bgmPlayer: null,
+      init: function() {
+        try {
+          this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        } catch (e) {
+          console.log('Web Audio API not supported');
+        }
+        this.bgmPlayer = document.getElementById('bgmPlayer');
+        this.muted = localStorage.getItem('koala_legend_muted') === 'true';
+        this.updateMuteButton();
+        if (this.bgmPlayer) {
+          this.bgmPlayer.volume = 0.3;
+        }
+      },
+      toggleMute: function() {
+        this.muted = !this.muted;
+        localStorage.setItem('koala_legend_muted', this.muted);
+        this.updateMuteButton();
+        if (this.bgmPlayer) {
+          this.bgmPlayer.muted = this.muted;
+        }
+      },
+      updateMuteButton: function() {
+        const btn = document.getElementById('soundBtn');
+        if (btn) {
+          btn.innerHTML = this.muted ? '🔇' : '🎵';
+          btn.title = this.muted ? '开启音效' : '关闭音效';
+        }
+      },
+      playBGM: function() {
+        if (!this.muted && this.bgmPlayer) {
+          this.bgmPlayer.play().catch(e => {
+            console.log('BGM play failed:', e);
+          });
+        }
+      },
+      pauseBGM: function() {
+        if (this.bgmPlayer) {
+          this.bgmPlayer.pause();
+        }
+      },
+      playTone: function(frequency, duration, type = 'square', volume = 0.1) {
+        if (this.muted || !this.audioContext) return;
+        const oscillator = this.audioContext.createOscillator();
+        const gainNode = this.audioContext.createGain();
+        oscillator.connect(gainNode);
+        gainNode.connect(this.audioContext.destination);
+        oscillator.type = type;
+        oscillator.frequency.setValueAtTime(frequency, this.audioContext.currentTime);
+        gainNode.gain.setValueAtTime(volume, this.audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, this.audioContext.currentTime + duration);
+        oscillator.start(this.audioContext.currentTime);
+        oscillator.stop(this.audioContext.currentTime + duration);
+      },
+      playAttack: function() {
+        this.playTone(880, 0.15, 'sawtooth', 0.15);
+        setTimeout(() => this.playTone(1320, 0.1, 'square', 0.1), 50);
+      },
+      playHit: function() {
+        this.playTone(150, 0.3, 'sawtooth', 0.2);
+        setTimeout(() => this.playTone(100, 0.2, 'square', 0.15), 100);
+      },
+      playVictory: function() {
+        const notes = [523, 659, 784, 1047];
+        notes.forEach((freq, i) => {
+          setTimeout(() => this.playTone(freq, 0.3, 'sine', 0.15), i * 150);
+        });
+      },
+      playButton: function() {
+        this.playTone(600, 0.05, 'sine', 0.08);
+      }
+    };
+
+    SoundManager.init();
     
   </script>
+  
+  <audio id="bgmPlayer" loop>
+    <source src="https://music.163.com/song/media/outer/url?id=186297.mp3" type="audio/mpeg">
+  </audio>
+  
 </body>
 </html>

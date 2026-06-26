@@ -905,6 +905,318 @@
       box-shadow: 0 5px 30px rgba(255, 215, 0, 0.7);
     }
 
+    /* 角色创建界面 */
+    .character-create-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(180deg, #0a0515 0%, #1a0a2f 100%);
+      z-index: 5000;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .character-create-screen.show {
+      display: flex;
+    }
+
+    .create-title {
+      font-size: 48px;
+      font-weight: bold;
+      color: #ffd700;
+      text-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+      margin-bottom: 40px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .class-selection {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .class-card {
+      width: 220px;
+      height: 280px;
+      background: rgba(0, 0, 0, 0.5);
+      border: 2px solid rgba(255, 215, 0, 0.3);
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .class-card:hover {
+      border-color: #ffd700;
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+    }
+
+    .class-card.selected {
+      border-color: #ffd700;
+      background: rgba(255, 215, 0, 0.1);
+      box-shadow: 0 0 40px rgba(255, 215, 0, 0.5);
+    }
+
+    .class-icon {
+      font-size: 80px;
+      margin-bottom: 15px;
+      animation: idle 2s ease-in-out infinite;
+    }
+
+    .class-name {
+      font-size: 24px;
+      font-weight: bold;
+      color: #ffd700;
+      margin-bottom: 10px;
+    }
+
+    .class-desc {
+      font-size: 14px;
+      color: #9ca3af;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .class-stats {
+      font-size: 12px;
+      color: #22c55e;
+      text-align: center;
+    }
+
+    .name-input-section {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .name-input-label {
+      font-size: 18px;
+      color: #ffd700;
+      margin-bottom: 10px;
+    }
+
+    .name-input {
+      width: 300px;
+      padding: 15px 20px;
+      background: rgba(0, 0, 0, 0.5);
+      border: 2px solid rgba(255, 215, 0, 0.3);
+      border-radius: 10px;
+      color: #fff;
+      font-size: 18px;
+      text-align: center;
+      outline: none;
+      transition: all 0.3s;
+    }
+
+    .name-input:focus {
+      border-color: #ffd700;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    }
+
+    .create-btn {
+      padding: 15px 50px;
+      background: linear-gradient(135deg, #ffd700, #ff8c00);
+      color: #000;
+      border: none;
+      border-radius: 15px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+      transition: all 0.3s;
+    }
+
+    .create-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 40px rgba(255, 215, 0, 0.7);
+    }
+
+    .create-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* PK系统界面 */
+    .pk-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(180deg, #1a0a1f 0%, #0a0a0f 100%);
+      z-index: 4000;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 80px;
+      overflow: hidden;
+    }
+
+    .pk-screen.show {
+      display: flex;
+    }
+
+    .pk-title {
+      font-size: 36px;
+      font-weight: bold;
+      color: #ef4444;
+      text-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+      margin-bottom: 30px;
+    }
+
+    .pk-arena {
+      display: flex;
+      gap: 50px;
+      align-items: center;
+      justify-content: center;
+      width: 80%;
+      max-width: 800px;
+    }
+
+    .pk-player {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 200px;
+    }
+
+    .pk-avatar {
+      font-size: 100px;
+      margin-bottom: 20px;
+      animation: idle 2s ease-in-out infinite;
+    }
+
+    .pk-name {
+      font-size: 24px;
+      font-weight: bold;
+      color: #ffd700;
+      margin-bottom: 10px;
+    }
+
+    .pk-stats {
+      font-size: 14px;
+      color: #9ca3af;
+      text-align: center;
+    }
+
+    .pk-hp-bar {
+      width: 100%;
+      height: 30px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 15px;
+      border: 2px solid rgba(255, 215, 0, 0.5);
+      margin-top: 15px;
+      overflow: hidden;
+    }
+
+    .pk-hp-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #22c55e, #f97316, #ef4444);
+      transition: width 0.3s;
+    }
+
+    /* 排行榜 */
+    .leaderboard-section {
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 15px;
+      padding: 20px;
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      margin-top: 20px;
+      max-width: 600px;
+    }
+
+    .leaderboard-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #ffd700;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .leaderboard-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .leaderboard-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 15px;
+      background: rgba(255, 215, 0, 0.05);
+      border-radius: 8px;
+      margin-bottom: 5px;
+      border: 1px solid rgba(255, 215, 0, 0.2);
+    }
+
+    .leaderboard-item:nth-child(1) {
+      background: rgba(255, 215, 0, 0.15);
+      border-color: #ffd700;
+    }
+
+    .leaderboard-item:nth-child(2) {
+      background: rgba(192, 192, 192, 0.1);
+      border-color: rgba(192, 192, 192, 0.5);
+    }
+
+    .leaderboard-item:nth-child(3) {
+      background: rgba(205, 127, 50, 0.1);
+      border-color: rgba(205, 127, 50, 0.5);
+    }
+
+    .leaderboard-rank {
+      font-weight: bold;
+      color: #ffd700;
+    }
+
+    .leaderboard-name {
+      color: #fff;
+    }
+
+    .leaderboard-power {
+      color: #22c55e;
+      font-weight: bold;
+    }
+
+    /* 装备详情 */
+    .equipment-tooltip {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.9);
+      border: 2px solid rgba(255, 215, 0, 0.5);
+      border-radius: 10px;
+      padding: 10px 15px;
+      z-index: 100;
+      display: none;
+      min-width: 150px;
+    }
+
+    .equipment-tooltip.show {
+      display: block;
+    }
+
+    .tooltip-name {
+      font-size: 14px;
+      font-weight: bold;
+      color: #ffd700;
+      margin-bottom: 5px;
+    }
+
+    .tooltip-stats {
+      font-size: 12px;
+      color: #22c55e;
+    }
+
     /* 响应式 */
     @media (max-width: 600px) {
       .equipment-grid {
@@ -926,6 +1238,64 @@
   </style>
 </head>
 <body>
+  <!-- 角色创建界面 -->
+  <div id="characterCreateScreen" class="character-create-screen">
+    <div class="create-title" data-i18n="create_title">创建角色</div>
+
+    <div class="class-selection">
+      <div class="class-card" onclick="selectClass('warrior')" data-class="warrior">
+        <div class="class-icon">⚔️</div>
+        <div class="class-name" data-i18n="class_warrior">战士</div>
+        <div class="class-desc" data-i18n="class_warrior_desc">勇猛的近战战士，高攻击高防御</div>
+        <div class="class-stats">
+          ATK: 15 | DEF: 10 | HP: 150
+        </div>
+      </div>
+
+      <div class="class-card" onclick="selectClass('mage')" data-class="mage">
+        <div class="class-icon">🧙</div>
+        <div class="class-name" data-i18n="class_mage">法师</div>
+        <div class="class-desc" data-i18n="class_mage_desc">强大的魔法师，超高攻击力</div>
+        <div class="class-stats">
+          ATK: 25 | DEF: 5 | HP: 80
+        </div>
+      </div>
+
+      <div class="class-card" onclick="selectClass('archer')" data-class="archer">
+        <div class="class-icon">🏹</div>
+        <div class="class-name" data-i18n="class_archer">弓箭手</div>
+        <div class="class-desc" data-i18n="class_archer_desc">敏捷的远程射手，平衡发展</div>
+        <div class="class-stats">
+          ATK: 20 | DEF: 7 | HP: 100
+        </div>
+      </div>
+    </div>
+
+    <div class="name-input-section">
+      <div class="name-input-label" data-i18n="create_name_label">输入角色名称</div>
+      <input type="text" class="name-input" id="characterNameInput" placeholder="传奇勇士" maxlength="20" data-i18n-placeholder="create_name_placeholder">
+    </div>
+
+    <button class="create-btn" id="createCharacterBtn" onclick="createCharacter()" data-i18n="create_btn">开始传奇</button>
+  </div>
+
+  <!-- PK界面 -->
+  <div id="pkScreen" class="pk-screen">
+    <div class="pk-title" data-i18n="pk_title">⚔️ PK对战</div>
+    <div class="pk-arena" id="pkArena">
+      <!-- 动态生成 -->
+    </div>
+    <button class="close-battle-btn" onclick="closePKScreen()" style="margin-top: 30px;">关闭</button>
+
+    <!-- 排行榜 -->
+    <div class="leaderboard-section">
+      <div class="leaderboard-title" data-i18n="leaderboard_title">🏆 战力排行榜</div>
+      <ul class="leaderboard-list" id="leaderboardList">
+        <!-- 动态生成 -->
+      </ul>
+    </div>
+  </div>
+
   <!-- 导航栏 -->
   <nav class="navbar">
     <div class="nav-logo" data-i18n="nav_title">⚔️ 考拉传奇人生</div>
@@ -1044,6 +1414,7 @@
         <div class="game-tab active" onclick="switchTab('synthesize')" data-i18n="tab_synthesize">装备合成</div>
         <div class="game-tab" onclick="switchTab('quests')" data-i18n="tab_quests">任务系统</div>
         <div class="game-tab" onclick="switchTab('boss')" data-i18n="tab_boss">BOSS挑战</div>
+        <div class="game-tab" onclick="switchTab('pk')" data-i18n="tab_pk">PK对战</div>
       </div>
 
       <!-- 装备合成 -->
@@ -1064,6 +1435,29 @@
       <div class="game-panel" id="bossPanel">
         <div class="quest-list" id="bossList">
           <!-- 动态生成 -->
+        </div>
+      </div>
+
+      <!-- PK对战 -->
+      <div class="game-panel" id="pkPanel">
+        <div style="text-align: center; padding: 20px;">
+          <div style="font-size: 18px; color: #ffd700; margin-bottom: 20px;" data-i18n="pk_desc">挑战其他玩家，证明你的实力！</div>
+          <div style="margin-bottom: 15px;">
+            <input type="text" id="pkAddressInput" placeholder="输入对手钱包地址" style="width: 80%; max-width: 400px; padding: 10px; background: rgba(0,0,0,0.5); border: 2px solid rgba(255,215,0,0.3); border-radius: 10px; color: #fff;">
+          </div>
+          <button class="quest-action" onclick="startPK()" style="width: 200px; margin: 10px auto;" data-i18n="pk_start_btn">开始PK</button>
+
+          <!-- 排行榜 -->
+          <div class="leaderboard-section">
+            <div class="leaderboard-title" data-i18n="leaderboard_title">🏆 战力排行榜</div>
+            <ul class="leaderboard-list" id="leaderboardList">
+              <li class="leaderboard-item">
+                <span class="leaderboard-rank">#1</span>
+                <span class="leaderboard-name">加载中...</span>
+                <span class="leaderboard-power">-</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -1173,7 +1567,23 @@
         lang_ko: '한국어',
         lang_ja: '日本語',
         battle_title: 'BOSS挑战:',
-        battle_close: '关闭'
+        battle_close: '关闭',
+        create_title: '创建角色',
+        create_name_label: '输入角色名称',
+        create_name_placeholder: '传奇勇士',
+        create_btn: '开始传奇',
+        class_warrior: '战士',
+        class_warrior_desc: '勇猛的近战战士，高攻击高防御',
+        class_mage: '法师',
+        class_mage_desc: '强大的魔法师，超高攻击力',
+        class_archer: '弓箭手',
+        class_archer_desc: '敏捷的远程射手，平衡发展',
+        tab_pk: 'PK对战',
+        pk_title: '⚔️ PK对战',
+        pk_desc: '挑战其他玩家，证明你的实力！',
+        pk_start_btn: '开始PK',
+        leaderboard_title: '🏆 战力排行榜',
+        leaderboard_title2: '🏆 战力排行榜'
       },
       en: {
         nav_title: '⚔️ Koala Legend',
@@ -1235,7 +1645,23 @@
         lang_ko: '한국어',
         lang_ja: '日本語',
         battle_title: 'Boss Fight:',
-        battle_close: 'Close'
+        battle_close: 'Close',
+        create_title: 'Create Character',
+        create_name_label: 'Enter Character Name',
+        create_name_placeholder: 'Legend Warrior',
+        create_btn: 'Start Legend',
+        class_warrior: 'Warrior',
+        class_warrior_desc: 'Brave melee warrior, high ATK and DEF',
+        class_mage: 'Mage',
+        class_mage_desc: 'Powerful mage, very high ATK',
+        class_archer: 'Archer',
+        class_archer_desc: 'Agile ranged archer, balanced',
+        tab_pk: 'PK Battle',
+        pk_title: '⚔️ PK Battle',
+        pk_desc: 'Challenge other players, prove your strength!',
+        pk_start_btn: 'Start PK',
+        leaderboard_title: '🏆 Power Ranking',
+        leaderboard_title2: '🏆 Power Ranking'
       },
       ko: {
         nav_title: '⚔️ 코알라 레전드',
@@ -1297,7 +1723,23 @@
         lang_ko: '한국어',
         lang_ja: '日本語',
         battle_title: '보스전:',
-        battle_close: '닫기'
+        battle_close: '닫기',
+        create_title: '캐릭터 생성',
+        create_name_label: '캐릭터 이름 입력',
+        create_name_placeholder: '레전드 용사',
+        create_btn: '레전드 시작',
+        class_warrior: '전사',
+        class_warrior_desc: '용감한 전사, 높은 공격과 방어',
+        class_mage: '마법사',
+        class_mage_desc: '강력한 마법사, 매우 높은 공격',
+        class_archer: '궁수',
+        class_archer_desc: '민첩한 궁수, 밸런스',
+        tab_pk: 'PK 대전',
+        pk_title: '⚔️ PK 대전',
+        pk_desc: '다른 플레이어에게 도전하세요!',
+        pk_start_btn: 'PK 시작',
+        leaderboard_title: '🏆 전력 랭킹',
+        leaderboard_title2: '🏆 전력 랭킹'
       },
       ja: {
         nav_title: '⚔️ コアラレジェンド',
@@ -1359,7 +1801,23 @@
         lang_ko: '한국어',
         lang_ja: '日本語',
         battle_title: 'ボス戦:',
-        battle_close: '閉じる'
+        battle_close: '閉じる',
+        create_title: 'キャラクター作成',
+        create_name_label: 'キャラクター名入力',
+        create_name_placeholder: 'レジェンド戦士',
+        create_btn: 'レジェンド開始',
+        class_warrior: '戦士',
+        class_warrior_desc: '勇敢な近接戦士、高攻撃と高防御',
+        class_mage: '魔道士',
+        class_mage_desc: '強力な魔道士、超高攻撃',
+        class_archer: '弓使い',
+        class_archer_desc: '敏捷な弓使い、バランス型',
+        tab_pk: 'PK戦',
+        pk_title: '⚔️ PK戦',
+        pk_desc: '他のプレイヤーに挑戦しよう！',
+        pk_start_btn: 'PK開始',
+        leaderboard_title: '🏆 戦力ランキング',
+        leaderboard_title2: '🏆 戦力ランキング'
       }
     };
 
@@ -1396,15 +1854,137 @@
     let provider, signer, userAddress;
     let koalaContract, usdtContract;
     let currentKoalaBalance = 0;
-    let character = {
+    let selectedClass = null;
+
+    // 职业配置
+    const classData = {
+      warrior: {
+        name: { zh: '战士', en: 'Warrior', ko: '전사', ja: '戦士' },
+        icon: '⚔️',
+        baseAtk: 15,
+        baseDef: 10,
+        baseHp: 150,
+        desc: { zh: '勇猛的近战战士，高攻击高防御', en: 'Brave melee warrior, high ATK and DEF', ko: '용감한 전사, 높은 공격과 방어', ja: '勇敢な近接戦士、高攻撃と高防御' }
+      },
+      mage: {
+        name: { zh: '法师', en: 'Mage', ko: '마법사', ja: '魔道士' },
+        icon: '🧙',
+        baseAtk: 25,
+        baseDef: 5,
+        baseHp: 80,
+        desc: { zh: '强大的魔法师，超高攻击力', en: 'Powerful mage, very high ATK', ko: '강력한 마법사, 매우 높은 공격', ja: '強力な魔道士、超高攻撃' }
+      },
+      archer: {
+        name: { zh: '弓箭手', en: 'Archer', ko: '궁수', ja: '弓使い' },
+        icon: '🏹',
+        baseAtk: 20,
+        baseDef: 7,
+        baseHp: 100,
+        desc: { zh: '敏捷的远程射手，平衡发展', en: 'Agile ranged archer, balanced', ko: '민첩한 궁수, 밸런스', ja: '敏捷な弓使い、バランス型' }
+      }
+    };
+
+    let character = loadCharacter() || {
       name: '传奇勇士',
+      class: 'warrior',
       level: 1,
       atk: 10,
       def: 5,
       hp: 100,
       exp: 0
     };
-    let inventory = [];
+
+    let inventory = loadInventory() || [];
+    let leaderboard = loadLeaderboard() || [];
+
+    // 加载角色数据
+    function loadCharacter() {
+      const saved = localStorage.getItem('koala_legend_character');
+      return saved ? JSON.parse(saved) : null;
+    }
+
+    // 保存角色数据
+    function saveCharacter() {
+      localStorage.setItem('koala_legend_character', JSON.stringify(character));
+    }
+
+    // 加载装备栏
+    function loadInventory() {
+      const saved = localStorage.getItem('koala_legend_inventory');
+      return saved ? JSON.parse(saved) : [];
+    }
+
+    // 保存装备栏
+    function saveInventory() {
+      localStorage.setItem('koala_legend_inventory', JSON.stringify(inventory));
+    }
+
+    // 加载排行榜
+    function loadLeaderboard() {
+      const saved = localStorage.getItem('koala_legend_leaderboard');
+      return saved ? JSON.parse(saved) : [];
+    }
+
+    // 保存排行榜
+    function saveLeaderboard() {
+      localStorage.setItem('koala_legend_leaderboard', JSON.stringify(leaderboard));
+    }
+
+    // 选择职业
+    function selectClass(className) {
+      selectedClass = className;
+      document.querySelectorAll('.class-card').forEach(card => {
+        card.classList.remove('selected');
+      });
+      document.querySelector(`[data-class="${className}"]`).classList.add('selected');
+    }
+
+    // 创建角色
+    function createCharacter() {
+      if (!selectedClass) {
+        showToast('请选择职业', 'error');
+        return;
+      }
+
+      const nameInput = document.getElementById('characterNameInput').value.trim();
+      if (!nameInput) {
+        showToast('请输入角色名称', 'error');
+        return;
+      }
+
+      const classInfo = classData[selectedClass];
+      character = {
+        name: nameInput,
+        class: selectedClass,
+        level: 1,
+        atk: classInfo.baseAtk,
+        def: classInfo.baseDef,
+        hp: classInfo.baseHp,
+        exp: 0,
+        icon: classInfo.icon
+      };
+
+      saveCharacter();
+
+      document.getElementById('characterCreateScreen').classList.remove('show');
+      updateCharacter();
+
+      showToast('角色创建成功！', 'success');
+    }
+
+    // 显示角色创建界面
+    function showCharacterCreate() {
+      document.getElementById('characterCreateScreen').classList.add('show');
+    }
+
+    // 检查是否已创建角色
+    function checkCharacter() {
+      if (!loadCharacter()) {
+        showCharacterCreate();
+        return false;
+      }
+      return true;
+    }
 
     // 切换语言
     function switchLanguage(lang) {
@@ -1462,7 +2042,7 @@
           return;
         }
 
-        document.getElementById('walletAddress').textContent = 
+        document.getElementById('walletAddress').textContent =
           userAddress.slice(0, 6) + '...' + userAddress.slice(-4);
         document.getElementById('connectBtn').textContent = t('nav_connected');
         document.getElementById('connectBtn').disabled = true;
@@ -1471,6 +2051,20 @@
         document.getElementById('characterSection').style.display = 'block';
         document.getElementById('inventorySection').style.display = 'block';
 
+        // 检查是否需要创建角色
+        if (!checkCharacter()) {
+          showLoading(false);
+          return;
+        }
+
+        // 加载角色数据
+        character = loadCharacter();
+        inventory = loadInventory();
+        leaderboard = loadLeaderboard();
+
+        updateCharacter();
+        updateInventory();
+        updateLeaderboardDisplay();
         await updateBalances();
         initGame();
 
@@ -1835,27 +2429,63 @@
 
     // 更新角色信息
     function updateCharacter() {
+      const charNameEl = document.getElementById('charName');
+      if (charNameEl && character.name) {
+        charNameEl.textContent = character.name;
+      }
+
+      const avatarEl = document.querySelector('.character-avatar');
+      if (avatarEl && character.icon) {
+        avatarEl.textContent = character.icon;
+      }
+
       document.getElementById('charLevel').textContent = character.level;
       document.getElementById('statAtk').textContent = character.atk;
       document.getElementById('statDef').textContent = character.def;
       document.getElementById('statHp').textContent = character.hp;
       document.getElementById('statExp').textContent = character.exp;
+
+      saveCharacter();
     }
 
     // 更新装备栏
     function updateInventory() {
       const grid = document.getElementById('inventoryGrid');
+      if (!grid) return;
+
       let html = '';
-      
-      inventory.forEach(item => {
-        html += `<div class="inventory-slot">${item.icon}</div>`;
+
+      inventory.forEach((item, index) => {
+        html += `
+          <div class="inventory-slot" onclick="showEquipmentInfo(${index})" style="cursor: pointer;">
+            ${item.icon}
+            <div class="equipment-tooltip" id="tooltip${index}">
+              <div class="tooltip-name">${item.name[currentLang] || item.name.zh}</div>
+              <div class="tooltip-stats">
+                ${item.atk ? 'ATK +' + item.atk : ''}
+                ${item.def ? 'DEF +' + item.def : ''}
+                ${item.hp ? 'HP +' + item.hp : ''}
+              </div>
+            </div>
+          </div>
+        `;
       });
-      
+
       for (let i = inventory.length; i < 18; i++) {
         html += `<div class="inventory-slot empty"></div>`;
       }
-      
+
       grid.innerHTML = html;
+      saveInventory();
+    }
+
+    // 显示装备详情
+    function showEquipmentInfo(index) {
+      const tooltip = document.getElementById('tooltip' + index);
+      if (tooltip) {
+        tooltip.classList.toggle('show');
+        setTimeout(() => tooltip.classList.remove('show'), 2000);
+      }
     }
 
     // 显示提示
@@ -1962,21 +2592,222 @@
     function generateLoot(boss) {
       const lootCount = Math.floor(Math.random() * 3) + 1;
       const loots = [];
-      
+
       const availableEquipment = equipmentData.filter(e => e.level <= character.level + 2);
-      
+
       for (let i = 0; i < lootCount; i++) {
         if (availableEquipment.length > 0) {
           const randomIndex = Math.floor(Math.random() * availableEquipment.length);
           const loot = { ...availableEquipment[randomIndex] };
           loots.push(loot);
+          inventory.push(loot);
+          character.atk += loot.atk || 0;
+          character.def += loot.def || 0;
+          character.hp += loot.hp || 0;
         }
       }
-      
+
+      saveInventory();
+      saveCharacter();
+      updateInventory();
+
       return loots;
     }
 
-    
+    // PK系统
+    function startPK() {
+      const opponentAddress = document.getElementById('pkAddressInput').value.trim();
+      if (!opponentAddress) {
+        showToast('请输入对手钱包地址', 'error');
+        return;
+      }
+
+      if (opponentAddress.toLowerCase() === userAddress.toLowerCase()) {
+        showToast('不能挑战自己', 'error');
+        return;
+      }
+
+      if (currentKoalaBalance < 50) {
+        showToast('传奇币余额不足，PK需要50传奇币', 'error');
+        return;
+      }
+
+      showLoading(true);
+
+      (async () => {
+        try {
+          const decimals = await koalaContract.decimals();
+          const costAmount = ethers.utils.parseUnits('50', decimals);
+
+          const tx = await koalaContract.transfer(RECEIVE_ADDRESS, costAmount);
+          await tx.wait();
+
+          showLoading(false);
+          await simulatePK(opponentAddress);
+
+        } catch (e) {
+          showLoading(false);
+          showToast('PK失败: ' + e.message, 'error');
+        }
+      })();
+    }
+
+    async function simulatePK(opponentAddress) {
+      const opponent = generateOpponent(opponentAddress);
+      showPKScreen(opponent);
+
+      let playerHp = character.hp;
+      let opponentHp = opponent.hp;
+
+      const pkArena = document.getElementById('pkArena');
+
+      while (playerHp > 0 && opponentHp > 0) {
+        await new Promise(resolve => setTimeout(resolve, 800));
+
+        const playerDamage = Math.floor(Math.random() * 20) + character.atk / 3;
+        opponentHp = Math.max(0, opponentHp - playerDamage);
+
+        const playerHpFill = document.getElementById('playerPkHp');
+        const opponentHpFill = document.getElementById('opponentPkHp');
+
+        if (playerHpFill && opponentHpFill) {
+          playerHpFill.style.width = Math.floor((playerHp / character.hp) * 100) + '%';
+          opponentHpFill.style.width = Math.floor((opponentHp / opponent.hp) * 100) + '%';
+        }
+
+        if (opponentHp <= 0) break;
+
+        await new Promise(resolve => setTimeout(resolve, 600));
+
+        const opponentDamage = Math.floor(Math.random() * 20) + opponent.atk / 3;
+        playerHp = Math.max(0, playerHp - opponentDamage);
+
+        if (playerHpFill && opponentHpFill) {
+          playerHpFill.style.width = Math.floor((playerHp / character.hp) * 100) + '%';
+          opponentHpFill.style.width = Math.floor((opponentHp / opponent.hp) * 100) + '%';
+        }
+      }
+
+      await new Promise(resolve => setTimeout(resolve, 500));
+
+      if (playerHp > 0) {
+        character.exp += 200;
+        if (character.exp >= character.level * 200) {
+          character.level++;
+        }
+        saveCharacter();
+        updateCharacter();
+        showToast('PK胜利！获得200经验值', 'success');
+        updateLeaderboard(userAddress, character, true);
+      } else {
+        showToast('PK失败！', 'error');
+        updateLeaderboard(opponentAddress, opponent, true);
+      }
+
+      updateLeaderboardDisplay();
+    }
+
+    function generateOpponent(address) {
+      const level = Math.floor(Math.random() * 5) + character.level;
+      return {
+        name: address.slice(0, 6) + '...' + address.slice(-4),
+        level: level,
+        atk: level * 15 + Math.floor(Math.random() * 10),
+        def: level * 10 + Math.floor(Math.random() * 5),
+        hp: level * 100 + Math.floor(Math.random() * 50),
+        icon: ['⚔️', '🧙', '🏹'][Math.floor(Math.random() * 3)]
+      };
+    }
+
+    function showPKScreen(opponent) {
+      const pkScreen = document.getElementById('pkScreen');
+      const pkArena = document.getElementById('pkArena');
+
+      pkArena.innerHTML = `
+        <div class="pk-player">
+          <div class="pk-avatar">${character.icon || '⚔️'}</div>
+          <div class="pk-name">${character.name}</div>
+          <div class="pk-stats">
+            Lv.${character.level} | ATK:${character.atk} | DEF:${character.def} | HP:${character.hp}
+          </div>
+          <div class="pk-hp-bar">
+            <div class="pk-hp-fill" id="playerPkHp" style="width: 100%"></div>
+          </div>
+        </div>
+
+        <div style="font-size: 40px; color: #ef4444; font-weight: bold;">VS</div>
+
+        <div class="pk-player">
+          <div class="pk-avatar">${opponent.icon}</div>
+          <div class="pk-name">${opponent.name}</div>
+          <div class="pk-stats">
+            Lv.${opponent.level} | ATK:${opponent.atk} | DEF:${opponent.def} | HP:${opponent.hp}
+          </div>
+          <div class="pk-hp-bar">
+            <div class="pk-hp-fill" id="opponentPkHp" style="width: 100%"></div>
+          </div>
+        </div>
+      `;
+
+      pkScreen.classList.add('show');
+    }
+
+    function closePKScreen() {
+      document.getElementById('pkScreen').classList.remove('show');
+    }
+
+    // 排行榜系统
+    function updateLeaderboard(address, playerData, isWinner) {
+      const power = playerData.atk + playerData.def + playerData.hp;
+      const playerName = playerData.name || address.slice(0, 6) + '...' + address.slice(-4);
+
+      const existingIndex = leaderboard.findIndex(item => item.address === address);
+
+      if (existingIndex !== -1) {
+        leaderboard[existingIndex].power = power;
+        leaderboard[existingIndex].wins += isWinner ? 1 : 0;
+        leaderboard[existingIndex].level = playerData.level;
+      } else {
+        leaderboard.push({
+          address: address,
+          name: playerName,
+          power: power,
+          level: playerData.level,
+          wins: isWinner ? 1 : 0
+        });
+      }
+
+      leaderboard.sort((a, b) => b.power - a.power);
+      leaderboard = leaderboard.slice(0, 10);
+
+      saveLeaderboard();
+    }
+
+    function updateLeaderboardDisplay() {
+      const list = document.getElementById('leaderboardList');
+      if (!list) return;
+
+      if (leaderboard.length === 0) {
+        list.innerHTML = `
+          <li class="leaderboard-item">
+            <span class="leaderboard-rank">#1</span>
+            <span class="leaderboard-name">暂无数据</span>
+            <span class="leaderboard-power">-</span>
+          </li>
+        `;
+        return;
+      }
+
+      list.innerHTML = leaderboard.map((item, index) => `
+        <li class="leaderboard-item">
+          <span class="leaderboard-rank">#${index + 1}</span>
+          <span class="leaderboard-name">${item.name}</span>
+          <span class="leaderboard-power">战力: ${item.power}</span>
+        </li>
+      `).join('');
+    }
+
+
   </script>
 
   <!-- 战斗界面 -->
